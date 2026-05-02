@@ -1,0 +1,156 @@
+/*
+  Calculator Styles
+  Provides a clean, responsive UI for the simple calculator.
+*/
+
+:root {
+  /* Color palette */
+  --color-bg: #f0f0f0;               /* Page background */
+  --color-calculator-bg: #ffffff;    /* Calculator container */
+  --color-display-bg: #eaeaea;       /* Display background */
+  --color-display-text: #333333;     /* Display text */
+  --color-button-bg: #fafafa;        /* Default button */
+  --color-button-text: #333333;      /* Default button text */
+  --color-operator-bg: #ff9500;      /* Operator buttons */
+  --color-operator-text: #ffffff;    /* Operator text */
+  --color-equals-bg: #34c759;        /* Equals button */
+  --color-equals-text: #ffffff;      /* Equals text */
+  --color-clear-bg: #ff3b30;         /* Clear button */
+  --color-clear-text: #ffffff;       /* Clear text */
+  --color-backspace-bg: #8e8e93;     /* Backspace button */
+  --color-backspace-text: #ffffff;   /* Backspace text */
+
+  /* Typography */
+  --font-size-base: 1rem;            /* Base button font size */
+  --font-size-display: 2rem;         /* Display font size */
+
+  /* Layout */
+  --spacing: 8px;                    /* General spacing / grid gap */
+  --border-radius: 8px;              /* Rounded corners */
+}
+
+/* Global page styling */
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--color-bg);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+/* Calculator container */
+#calculator {
+  width: 100%;
+  max-width: 320px;
+  background-color: var(--color-calculator-bg);
+  border-radius: var(--border-radius);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  padding: var(--spacing);
+  box-sizing: border-box;
+}
+
+/* Display area – read‑only visual output */
+.display {
+  height: 60px;
+  line-height: 60px;
+  font-size: var(--font-size-display);
+  text-align: right;
+  padding: 0 var(--spacing);
+  background-color: var(--color-display-bg);
+  color: var(--color-display-text);
+  border: 1px solid #ccc;
+  border-radius: var(--border-radius);
+  overflow-x: auto;
+  overflow-y: hidden;
+  white-space: nowrap;
+  box-sizing: border-box;
+  margin-bottom: var(--spacing);
+}
+
+/* Buttons grid */
+.buttons {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--spacing);
+}
+
+/* Base button styling */
+.buttons button {
+  width: 100%;
+  height: 60px;
+  font-size: var(--font-size-base);
+  background-color: var(--color-button-bg);
+  color: var(--color-button-text);
+  border: none;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.buttons button:hover,
+.buttons button:focus {
+  background-color: #e0e0e0;
+  outline: none;
+  transform: translateY(1px);
+}
+
+/* Operator button styling */
+.buttons button[data-action="operator"] {
+  background-color: var(--color-operator-bg);
+  color: var(--color-operator-text);
+}
+
+.buttons button[data-action="operator"]:hover,
+.buttons button[data-action="operator"]:focus {
+  background-color: #e68a00; /* Slightly darker on hover */
+}
+
+/* Equals button styling */
+.buttons button[data-action="equals"] {
+  background-color: var(--color-equals-bg);
+  color: var(--color-equals-text);
+}
+
+.buttons button[data-action="equals"]:hover,
+.buttons button[data-action="equals"]:focus {
+  background-color: #28a745;
+}
+
+/* Clear button styling */
+.buttons button[data-action="clear"] {
+  background-color: var(--color-clear-bg);
+  color: var(--color-clear-text);
+}
+
+.buttons button[data-action="clear"]:hover,
+.buttons button[data-action="clear"]:focus {
+  background-color: #e02d20;
+}
+
+/* Backspace button styling */
+.buttons button[data-action="backspace"] {
+  background-color: var(--color-backspace-bg);
+  color: var(--color-backspace-text);
+}
+
+.buttons button[data-action="backspace"]:hover,
+.buttons button[data-action="backspace"]:focus {
+  background-color: #6c6c70;
+}
+
+/* Responsive adjustments for very small screens */
+@media (max-width: 400px) {
+  .display {
+    font-size: 1.5rem;
+    height: 50px;
+    line-height: 50px;
+  }
+
+  .buttons button {
+    height: 50px;
+    font-size: 0.9rem;
+  }
+}

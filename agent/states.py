@@ -8,7 +8,7 @@ class File(BaseModel):
     purpose: str = Field(description="The purpose of the file, e.g. 'main application logic', 'data processing module', etc.")
 
 # Planner Schema
-class Planner_schema(BaseModel):
+class Plan(BaseModel):
     name: str = Field(description="The name of app to be built")
     description: str = Field(description="A oneline description of the app to be built, e.g. 'A web application for managing personal finances'")
     techstack: str = Field(description="The tech stack to be used for the app, e.g. 'python', 'javascript', 'react', 'flask', etc.")
