@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CodeSite AI — Build Apps with AI</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- ── NAV ────────────────────────────────────────────── -->
+  <nav class="nav" role="navigation" aria-label="Main navigation">
+    <div class="nav-inner">
+      <a class="nav-logo" href="#" aria-label="CodeSite AI home">
+        <div class="nav-logo-icon" aria-hidden="true">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+            <rect x="1" y="1" width="7" height="7" rx="2" fill="currentColor" opacity="0.9"/>
+            <rect x="12" y="1" width="7" height="7" rx="2" fill="currentColor" opacity="0.6"/>
+            <rect x="1" y="12" width="7" height="7" rx="2" fill="currentColor" opacity="0.6"/>
+            <rect x="12" y="12" width="7" height="7" rx="2" fill="currentColor" opacity="0.3"/>
+          </svg>
+        </div>
+        <span class="nav-logo-text">CodeSite<strong>AI</strong></span>
+      </a>
+      <div class="nav-actions">
+        <a class="btn btn-ghost" href="#">Sign In</a>
+        <a class="btn btn-primary" href="#">Get Started</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ── HERO ───────────────────────────────────────────── -->
+  <section class="hero" aria-label="Hero">
+    <div class="hero-inner">
+      <div class="hero-content">
+        <div class="hero-badge">
+          <span class="badge-dot" aria-hidden="true"></span>
+          Powered by Llama 3.3 · Groq
+        </div>
+        <h1 class="hero-title">
+          Build Any Web App<br/>
+          <span class="hero-title-accent">With AI Agents</span>
+        </h1>
+        <p class="hero-subtitle">
+          Describe your idea in plain English. CodeSite AI plans, architects, and codes
+          a complete HTML/CSS/JS app — autonomously, in seconds.
+        </p>
+        <div class="hero-tags" role="list" aria-label="Features">
+          <span class="tag" role="listitem">AI PLANNER</span>
+          <span class="tag" role="listitem">AI ARCHITECT</span>
+          <span class="tag" role="listitem">AI CODER</span>
+          <span class="tag tag-alt" role="listitem">LIVE LOG</span>
+          <span class="tag tag-alt" role="listitem">EXPORT FILES</span>
+        </div>
+        <button class="btn btn-primary btn-hero" id="heroCtaBtn">
+          Start Building
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+            <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Pipeline Visual (decorative) -->
+      <div class="hero-visual" aria-hidden="true">
+        <div class="pipeline-card">
+          <div class="pipeline-card-header">
+            <span class="pipeline-card-label">AI Pipeline</span>
+            <span class="pipeline-card-status">● Live</span>
+          </div>
+          <div class="pipeline-steps">
+            <div class="pipeline-step done">
+              <div class="step-icon"><svg width="11" height="11" viewBox="0 0 11 11" fill="none"><polyline points="2,5.5 4.5,8 9,3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              <div class="step-info"><div class="step-name">Planner</div><div class="step-detail">Spec generated</div></div>
+            </div>
+            <div class="pipeline-step done">
+              <div class="step-icon"><svg width="11" height="11" viewBox="0 0 11 11" fill="none"><polyline points="2,5.5 4.5,8 9,3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              <div class="step-info"><div class="step-name">Architect</div><div class="step-detail">3 tasks planned</div></div>
+            </div>
+            <div class="pipeline-step active">
+              <div class="step-icon spin"><svg width="11" height="11" viewBox="0 0 11 11" fill="none"><circle cx="5.5" cy="5.5" r="4" stroke="currentColor" stroke-width="2" stroke-dasharray="9 5" stroke-linecap="round"/></svg></div>
+              <div class="step-info"><div class="step-name">Coder</div><div class="step-detail">Writing script.js…</div></div>
+            </div>
+          </div>
+          <div class="pipeline-output">
+            <div class="output-row"><span class="out-file">index.html</span><span class="out-check">✓</span></div>
+            <div class="output-row"><span class="out-file">style.css</span><span class="out-check">✓</span></div>
+            <div class="output-row typing-row"><span class="out-file">script.js</span><span class="out-cursor">|</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── APP BUILDER ────────────────────────────────────── -->
+  <section class="app-section" id="appSection" aria-label="App builder">
+    <div class="app-inner">
+
+      <!-- Left: Input -->
+      <aside class="app-left">
+        <div class="card input-card">
+          <div class="card-header">
+            <div class="step-badge">01</div>
+            <h2 class="card-title">Describe your app</h2>
+          </div>
+
+          <textarea
+            id="promptInput"
+            class="prompt-textarea"
+            placeholder="e.g. Build a pomodoro timer with start/pause/reset, a session counter, and animated progress ring..."
+            rows="5"
+            aria-label="App description"
+            spellcheck="false"
+          ></textarea>
+          <div class="input-footer">
+            <span class="char-count"><span id="charCount">0</span> chars</span>
+            <span class="shortcut-hint">⌘+Enter to build</span>
+          </div>
+
+          <div class="examples-wrap">
+            <p class="examples-label">Quick examples</p>
+            <div class="examples-grid" role="list">
+              <button class="example-btn" role="listitem" data-prompt="Build a Kanban board with three columns (To Do, In Progress, Done), drag-and-drop cards, color labels, and localStorage persistence.">
+                <span class="ex-icon">📋</span><span class="ex-name">Kanban Board</span>
+              </button>
+              <button class="example-btn" role="listitem" data-prompt="Create a markdown notes app with live preview, auto-save to localStorage, and a sidebar file list.">
+                <span class="ex-icon">📝</span><span class="ex-name">Markdown Notes</span>
+              </button>
+              <button class="example-btn" role="listitem" data-prompt="Build a personal finance tracker with income/expense entries, categories, running balance, and a bar chart summary.">
+                <span class="ex-icon">💰</span><span class="ex-name">Finance Tracker</span>
+              </button>
+              <button class="example-btn" role="listitem" data-prompt="Make a typing speed test with a random passage, live WPM counter, accuracy percentage, and a results screen.">
+                <span class="ex-icon">⌨️</span><span class="ex-name">Typing Test</span>
+              </button>
+              <button class="example-btn" role="listitem" data-prompt="Build a habit tracker with daily checkboxes, a 7-day streak heatmap, and motivational progress messages.">
+                <span class="ex-icon">✅</span><span class="ex-name">Habit Tracker</span>
+              </button>
+              <button class="example-btn" role="listitem" data-prompt="Create a colour palette generator that produces harmonious palettes from a seed colour and lets users copy hex codes.">
+                <span class="ex-icon">🎨</span><span class="ex-name">Color Palette</span>
+              </button>
+            </div>
+          </div>
+
+          <button class="btn btn-primary btn-build" id="buildBtn" aria-label="Build app">
+            <svg width="17" height="17" viewBox="0 0 17 17" fill="none" aria-hidden="true">
+              <path d="M8.5 1.5L15.5 5.5V11.5L8.5 15.5L1.5 11.5V5.5L8.5 1.5Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+              <circle cx="8.5" cy="8.5" r="2.2" fill="currentColor"/>
+            </svg>
+            Build My App
+          </button>
+        </div>
+      </aside>
+
+      <!-- Right: Output -->
+      <div class="app-right">
+
+        <!-- Pipeline tracker -->
+        <div class="card">
+          <div class="card-header">
+            <div class="step-badge">02</div>
+            <h2 class="card-title">Build Pipeline</h2>
+            <div class="status-pill" id="statusPill">
+              <span class="status-dot-sm" id="statusDot"></span>
+              <span id="statusLabel">Idle</span>
+            </div>
+          </div>
+          <div class="tracker-stages" role="list">
+            <div class="tracker-stage" id="stagePlanner" role="listitem">
+              <div class="tsi">
+                <div class="ts-icon"><svg width="13" height="13" viewBox="0 0 13 13" fill="none"><rect x="1" y="1" width="4.5" height="4.5" rx="1.2" stroke="currentColor" stroke-width="1.5"/><rect x="7.5" y="1" width="4.5" height="4.5" rx="1.2" stroke="currentColor" stroke-width="1.5"/><rect x="1" y="7.5" width="4.5" height="4.5" rx="1.2" stroke="currentColor" stroke-width="1.5"/><rect x="7.5" y="7.5" width="4.5" height="4.5" rx="1.2" stroke="currentColor" stroke-width="1.5"/></svg></div>
+                <div class="ts-line"></div>
+              </div>
+              <div class="ts-body">
+                <div class="ts-title">Planner <span class="ts-sub">Prompt → structured spec</span></div>
+                <div class="ts-output" id="plannerOutput" aria-live="polite"></div>
+              </div>
+            </div>
+            <div class="tracker-stage" id="stageArchitect" role="listitem">
+              <div class="tsi">
+                <div class="ts-icon"><svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M6.5 1L12 4V9L6.5 12L1 9V4L6.5 1Z" stroke="currentColor" stroke-width="1.5"/><circle cx="6.5" cy="6.5" r="1.8" stroke="currentColor" stroke-width="1.5"/></svg></div>
+                <div class="ts-line"></div>
+              </div>
+              <div class="ts-body">
+                <div class="ts-title">Architect <span class="ts-sub">Spec → implementation tasks</span></div>
+                <div class="ts-output" id="architectOutput" aria-live="polite"></div>
+              </div>
+            </div>
+            <div class="tracker-stage" id="stageCoder" role="listitem">
+              <div class="tsi">
+                <div class="ts-icon"><svg width="13" height="13" viewBox="0 0 13 13" fill="none"><polyline points="4,2.5 1,6.5 4,10.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><polyline points="9,2.5 12,6.5 9,10.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><line x1="8" y1="1.5" x2="5" y2="11.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+              </div>
+              <div class="ts-body">
+                <div class="ts-title">Coder <span class="ts-sub">Writes each file step by step</span></div>
+                <div class="ts-output" id="coderOutput" aria-live="polite"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Log terminal -->
+        <div class="card log-card">
+          <div class="log-chrome">
+            <span class="log-dot r"></span><span class="log-dot y"></span><span class="log-dot g"></span>
+            <span class="log-label">build log</span>
+          </div>
+          <div class="log-body" id="terminalBody" role="log" aria-live="polite" aria-atomic="false">
+            <div class="log-placeholder">Awaiting your prompt…</div>
+          </div>
+        </div>
+
+        <!-- Generated files -->
+        <div class="card files-card" id="resultSection" hidden>
+          <div class="files-top">
+            <div class="card-header" style="padding:0;border:none;">
+              <div class="step-badge">03</div>
+              <h2 class="card-title">Generated Files</h2>
+            </div>
+            <button class="btn btn-ghost btn-sm" id="copyAllBtn">Copy All</button>
+          </div>
+          <div class="file-tabs" id="fileTabs" role="tablist"></div>
+          <div class="file-viewer" role="tabpanel">
+            <pre class="file-code" id="fileCode"></pre>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FEATURES ───────────────────────────────────────── -->
+  <section class="features-section" aria-label="Features">
+    <div class="section-inner">
+      <h2 class="section-title">Robust Features for Every Builder</h2>
+      <p class="section-subtitle">Three specialized AI agents collaborate so you get production-ready code without writing a single line.</p>
+      <div class="features-grid" role="list">
+        <div class="feature-card" role="listitem">
+          <div class="feature-icon-wrap teal" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><rect x="2" y="2" width="7.5" height="7.5" rx="2" fill="currentColor" opacity="0.85"/><rect x="12.5" y="2" width="7.5" height="7.5" rx="2" fill="currentColor" opacity="0.55"/><rect x="2" y="12.5" width="7.5" height="7.5" rx="2" fill="currentColor" opacity="0.55"/><rect x="12.5" y="12.5" width="7.5" height="7.5" rx="2" fill="currentColor" opacity="0.3"/></svg>
+          </div>
+          <h3 class="feature-title">AI Planner</h3>
+          <p class="feature-desc">Infers intent from your prompt and produces a complete project spec: app name, tech stack, full feature list, and file manifest — no ambiguity.</p>
+        </div>
+        <div class="feature-card" role="listitem">
+          <div class="feature-icon-wrap blue" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M11 2L20 7V15L11 20L2 15V7L11 2Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><circle cx="11" cy="11" r="3.5" fill="currentColor" opacity="0.7"/></svg>
+          </div>
+          <h3 class="feature-title">AI Architect</h3>
+          <p class="feature-desc">Breaks the spec into dependency-ordered tasks. Specifies exact function signatures, data flow, and integration details before a single file is touched.</p>
+        </div>
+        <div class="feature-card" role="listitem">
+          <div class="feature-icon-wrap indigo" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><polyline points="6,4 2,11 6,18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><polyline points="16,4 20,11 16,18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><line x1="13.5" y1="2" x2="8.5" y2="20" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          </div>
+          <h3 class="feature-title">AI Coder</h3>
+          <p class="feature-desc">A ReAct agent that reads existing files for context before writing. Produces complete, production-ready files — no stubs, no placeholders, no TODOs.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── TRUSTED TECH ────────────────────────────────────── -->
+  <section class="trusted-section" aria-label="Technology stack">
+    <div class="section-inner">
+      <h2 class="section-title">Ready for Any Tech Stack</h2>
+      <p class="section-subtitle">Built on the same open-source infrastructure trusted by leading AI teams worldwide.</p>
+      <div class="trusted-grid" role="list">
+        <div class="trusted-item" role="listitem">HTML5</div>
+        <div class="trusted-item" role="listitem">CSS3</div>
+        <div class="trusted-item" role="listitem">JavaScript ES6+</div>
+        <div class="trusted-item" role="listitem">LangGraph</div>
+        <div class="trusted-item" role="listitem">LangChain</div>
+        <div class="trusted-item" role="listitem">Groq</div>
+        <div class="trusted-item" role="listitem">Pydantic v2</div>
+        <div class="trusted-item" role="listitem">Python 3.12</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CTA ────────────────────────────────────────────── -->
+  <section class="cta-section" aria-label="Call to action">
+    <div class="section-inner cta-inner">
+      <h2 class="cta-title">It's that easy! Start building now.</h2>
+      <p class="cta-sub">No sign-up. No cloud. Just describe your app and watch it get built.</p>
+      <button class="btn btn-primary btn-hero" id="footerCtaBtn">Build Your First App →</button>
+    </div>
+  </section>
+
+  <script src="app.js"></script>
+</body>
+</html>
