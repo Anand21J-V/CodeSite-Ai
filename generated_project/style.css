@@ -27,6 +27,15 @@
   /* Layout */
   --spacing: 8px;                    /* General spacing / grid gap */
   --border-radius: 8px;              /* Rounded corners */
+
+  /* Password Generator specific */
+  --color-app-bg: #ffffff;           /* Light background for #app */
+  --color-primary: #0066ff;          /* Primary accent colour */
+  --color-primary-hover: #0052cc;    /* Darker on hover */
+  --color-input-bg: #fafafa;         /* Background for inputs */
+  --color-input-border: #cccccc;     /* Border colour for inputs */
+  --color-output-bg: #f5f5f5;        /* Output field background */
+  --color-output-border: #999999;    /* Output field border */
 }
 
 /* Global page styling */
@@ -152,5 +161,152 @@ body {
   .buttons button {
     height: 50px;
     font-size: 0.9rem;
+  }
+}
+
+/* -------------------------------------------------------------------------- */
+/* Password Generator Styles */
+/* -------------------------------------------------------------------------- */
+
+#app {
+  width: 100%;
+  max-width: 500px;
+  background-color: var(--color-app-bg);
+  padding: calc(var(--spacing) * 2);
+  margin: 0 auto; /* Center horizontally */
+  border-radius: var(--border-radius);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
+  display: grid;
+  gap: var(--spacing);
+}
+
+#app h1 {
+  margin: 0 0 var(--spacing) 0;
+  font-size: 1.5rem;
+  text-align: center;
+  color: var(--color-primary);
+}
+
+/* Form layout – mobile first (vertical) */
+#app label {
+  font-weight: 600;
+  margin-bottom: 2px;
+}
+
+#app input[type="number"],
+#app input[type="text"] {
+  width: 100%;
+  padding: var(--spacing);
+  border: 1px solid var(--color-input-border);
+  border-radius: var(--border-radius);
+  background-color: var(--color-input-bg);
+  box-sizing: border-box;
+  font-size: 1rem;
+}
+
+/* Criteria rows – each contains a checkbox and a label */
+.criteria {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing);
+}
+
+.criteria input[type="checkbox"] {
+  width: 1rem;
+  height: 1rem;
+  accent-color: var(--color-primary);
+}
+
+/* Buttons */
+#generateBtn,
+#copyBtn {
+  padding: var(--spacing) calc(var(--spacing) * 2);
+  font-size: 1rem;
+  font-weight: 600;
+  color: #fff;
+  background-color: var(--color-primary);
+  border: none;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+#generateBtn:hover,
+#copyBtn:hover,
+#generateBtn:focus,
+#copyBtn:focus {
+  background-color: var(--color-primary-hover);
+  outline: none;
+  transform: translateY(1px);
+}
+
+/* Output field – monospaced and distinct */
+#passwordOutput {
+  font-family: "Courier New", Courier, monospace;
+  background-color: var(--color-output-bg);
+  border: 1px solid var(--color-output-border);
+  color: #333;
+}
+
+/* Layout adjustments for wider screens */
+@media (min-width: 600px) {
+  #app {
+    grid-template-columns: 1fr 1fr;
+    align-items: start;
+  }
+
+  /* Make heading span full width */
+  #app > h1 {
+    grid-column: 1 / -1;
+  }
+
+  /* Ensure label/input pair for length occupies first column */
+  #app label[for="length"] {
+    margin-top: var(--spacing);
+  }
+
+  #app input#length {
+    margin-bottom: var(--spacing);
+  }
+
+  /* Place generate and copy buttons side‑by‑side */
+  #generateBtn,
+  #copyBtn {
+    width: 100%;
+  }
+
+  #generateBtn {
+    grid-column: 1;
+  }
+
+  #copyBtn {
+    grid-column: 2;
+  }
+
+  /* Criteria rows span both columns */
+  .criteria {
+    grid-column: 1 / -1;
+  }
+
+  #passwordOutput {
+    grid-column: 1 / -1;
+  }
+}
+
+/* Adjust font‑size for very small devices */
+@media (max-width: 400px) {
+  #app {
+    padding: var(--spacing);
+  }
+
+  #app h1 {
+    font-size: 1.25rem;
+  }
+
+  #generateBtn,
+  #copyBtn {
+    font-size: 0.9rem;
+    padding: var(--spacing);
   }
 }

@@ -3,37 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simple Calculator</title>
+    <title>Simple Password Generator</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div id="calculator" class="calculator">
-        <div id="display" class="display"></div>
-        <div class="buttons">
-            <!-- Digits -->
-            <button data-action="digit" data-value="7">7</button>
-            <button data-action="digit" data-value="8">8</button>
-            <button data-action="digit" data-value="9">9</button>
-            <button data-action="operator" data-value="/">/</button>
-
-            <button data-action="digit" data-value="4">4</button>
-            <button data-action="digit" data-value="5">5</button>
-            <button data-action="digit" data-value="6">6</button>
-            <button data-action="operator" data-value="*">*</button>
-
-            <button data-action="digit" data-value="1">1</button>
-            <button data-action="digit" data-value="2">2</button>
-            <button data-action="digit" data-value="3">3</button>
-            <button data-action="operator" data-value="-">-</button>
-
-            <button data-action="digit" data-value="0">0</button>
-            <button data-action="digit" data-value=".">.</button>
-            <button data-action="equals" data-value="=">=</button>
-            <button data-action="operator" data-value="+">+</button>
-
-            <button data-action="clear" data-value="C">C</button>
-            <button data-action="backspace" data-value="←">←</button>
+    <div id="app">
+        <h1>Simple Password Generator</h1>
+        <label for="length">Password Length:</label>
+        <input type="number" id="length" min="8" max="32" value="12">
+        <div class="criteria">
+            <input type="checkbox" id="includeUpper" checked>
+            <label for="includeUpper">Include Uppercase</label>
         </div>
+        <div class="criteria">
+            <input type="checkbox" id="includeLower" checked>
+            <label for="includeLower">Include Lowercase</label>
+        </div>
+        <div class="criteria">
+            <input type="checkbox" id="includeNumbers" checked>
+            <label for="includeNumbers">Include Numbers</label>
+        </div>
+        <div class="criteria">
+            <input type="checkbox" id="includeSymbols" checked>
+            <label for="includeSymbols">Include Symbols</label>
+        </div>
+        <button id="generateBtn">Generate</button>
+        <input type="text" id="passwordOutput" readonly>
+        <button id="copyBtn">Copy</button>
     </div>
     <script src="script.js"></script>
 </body>
